@@ -70,9 +70,15 @@ d3.csv("starbucksfoods.csv", function (csv) {
       return caloriesYScale(d.Calories);
     })
     .attr("r", 5)
-    .on("click", function (d, i) {});
-
-    var yElement = document.getElementById("yAxis").value;
+    .on("click", function (d, i) {
+      d3.selectAll("circle").attr("fill", "black");
+      d3.select(this).attr("fill", "pink");
+      document.getElementById("Fat").textContent = d.Fat;
+      document.getElementById("Carb").textContent = d.Carb;
+      document.getElementById("Fiber").textContent = d.Fiber;
+      document.getElementById("Protein").textContent = d.Protein;
+      document.getElementById("Calories").textContent = d.Calories;
+    });
 
   chart1 // or something else that selects the SVG element in your visualizations
     .append("g") // create a group node
@@ -112,12 +118,12 @@ d3.csv("starbucksfoods.csv", function (csv) {
 
     d3.select(document.getElementById("xAxis"))
     .on("change", function() {
-      document.getElementById("xAxisID").innerHTML = document.getElementById("xAxis").value
+      document.getElementById("xAxisID").textContent = document.getElementById("xAxis").value
     })
 
     d3.select(document.getElementById("yAxis"))
     .on("change", function() {
-      document.getElementById("yAxisID").innerHTML = document.getElementById("yAxis").value
+      document.getElementById("yAxisID").textContent = document.getElementById("yAxis").value
     })
 
 });
