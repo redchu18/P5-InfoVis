@@ -38,13 +38,6 @@ d3.csv("starbucksfoods.csv", function (csv) {
     .attr("width", width)
     .attr("height", height);
 
-
-  /******************************************
-		
-		ADD BRUSHING CODE HERE
-
-	 ******************************************/
-
   //add scatterplot points
   var circles1 = chart1
     .selectAll("circle")
