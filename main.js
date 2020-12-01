@@ -2,11 +2,13 @@ var width = 500;
 var height = 500;
 
 d3.csv("starbucksfoods.csv", function (csv) {
+
   for (var i = 0; i < csv.length; ++i) {
     csv[i].Fat = Number(csv[i].Fat);
     csv[i].Carb = Number(csv[i].Carb);
     csv[i].Fiber = Number(csv[i].Fiber);
     csv[i].Protein = Number(csv[i].Protein);
+    csv[i].Calories = Number(csv[i].Calories);
   }
 
   var fatExtent = d3.extent(csv, function (row) {
@@ -27,11 +29,22 @@ d3.csv("starbucksfoods.csv", function (csv) {
   //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   // Axis setup
-  var xScale = d3.scaleLinear().domain(fatExtent).range([50, 470]);
-  var yScale = d3.scaleLinear().domain(carbExtent).range([470, 30]);
+  // Will hardcode range values later, if Y axis, range will be [470, 30]
+  // if X axis, range will be [50, 470]
+  var carbXScale = d3.scaleLinear().domain(carbExtent).range([50, 470]);
+  var fatXScale = d3.scaleLinear().domain(fatExtent).range([50, 470]);
+  var fiberXScale = d3.scaleLinear().domain(fiberExtent).range([50, 470]);
+  var proteinXScale = d3.scaleLinear().domain(proteinExtent).range([50, 470]);
+  var caloriesXScale = d3.scaleLinear().domain(caloriesExtent).range([50, 470]);
 
-  var xAxis = d3.axisBottom().scale(xScale);
-  var yAxis = d3.axisLeft().scale(yScale);
+  var carbYScale = d3.scaleLinear().domain(carbExtent).range([470, 30]);
+  var fatYScale = d3.scaleLinear().domain(fatExtent).range([470, 30]);
+  var fiberYScale = d3.scaleLinear().domain(fiberExtent).range([470, 30]);
+  var proteinYScale = d3.scaleLinear().domain(proteinExtent).range([470, 30]);
+  var caloriesYScale = d3.scaleLinear().domain(caloriesExtent).range([470, 30]);
+
+  var xAxis = d3.axisBottom().scale(caloriesXScale);
+  var yAxis = d3.axisLeft().scale(caloriesYScale);
 
   //Create SVGs for charts
   var chart1 = d3
@@ -51,10 +64,10 @@ d3.csv("starbucksfoods.csv", function (csv) {
     })
     .attr("stroke", "black")
     .attr("cx", function (d) {
-      return xScale(d.Fat);
+      return caloriesXScale(d.Calories);
     })
     .attr("cy", function (d) {
-      return yScale(d.Carb);
+      return caloriesYScale(d.Calories);
     })
     .attr("r", 5)
     .on("click", function (d, i) {});
