@@ -59,6 +59,8 @@ d3.csv("starbucksfoods.csv", function (csv) {
     .attr("r", 5)
     .on("click", function (d, i) {});
 
+    var yElement = document.getElementById("yAxis").value;
+
   chart1 // or something else that selects the SVG element in your visualizations
     .append("g") // create a group node
     .attr("transform", "translate(0," + (width - 30) + ")")
@@ -83,13 +85,26 @@ d3.csv("starbucksfoods.csv", function (csv) {
     chart1.append("text")
     .attr("x", 200)
     .attr("y", 515)
-    .text("sjdhkfbhjdsbfjkh")
+    .text(document.getElementById("xAxis").value)
+    .attr("id", "xAxisID")
     .style("font-size", "15px");
 
     chart1.append("text")
     .attr("x", -300)
     .attr("y", 10)
-    .text("sjdhkfbhjdsbfjkh")
+    .text(document.getElementById("yAxis").value)
+    .attr("id", "yAxisID")
     .style("font-size", "15px")
     .attr("transform", "rotate(-90)");
+
+    d3.select(document.getElementById("xAxis"))
+    .on("change", function() {
+      document.getElementById("xAxisID").innerHTML = document.getElementById("xAxis").value
+    })
+
+    d3.select(document.getElementById("yAxis"))
+    .on("change", function() {
+      document.getElementById("yAxisID").innerHTML = document.getElementById("yAxis").value
+    })
+
 });
