@@ -35,8 +35,8 @@ d3.csv("starbucksfoods.csv", function (csv) {
   var chart1 = d3
     .select("#chart1")
     .append("svg:svg")
-    .attr("width", width)
-    .attr("height", height);
+    .attr("width", 550)
+    .attr("height", 550);
 
   //add scatterplot points
   var circles1 = chart1
@@ -80,7 +80,13 @@ d3.csv("starbucksfoods.csv", function (csv) {
 
     chart1.append("text")
     .attr("x", 200)
-    .attr("y", 500)
+    .attr("y", 515)
     .text("sjdhkfbhjdsbfjkh")
+    .style("font-size", "20px");
 
+    chart1.append("text")
+    .attr("x", -300)
+    .attr("y", 10)
+    .text("sjdhkfbhjdsbfjkh")
+    .attr("transform", "rotate(-90)")
 });
