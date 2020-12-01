@@ -85,4 +85,9 @@ d3.csv("starbucksfoods.csv", function (csv) {
     .attr("dy", ".71em")
     .style("text-anchor", "end");
 
+    chart1.append("text")
+    .attr("x", 200)
+    .attr("y", 500)
+    .text("sjdhkfbhjdsbfjkh")
+
 });
