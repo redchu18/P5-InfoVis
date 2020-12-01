@@ -9,7 +9,6 @@ d3.csv("starbucksfoods.csv", function (csv) {
     csv[i].Protein = Number(csv[i].Protein);
   }
 
-  // COMPLETE THESE FUNCTIONS TO SEE THE SCATTERPLOTS +++++++++++++++
   var fatExtent = d3.extent(csv, function (row) {
 	  return row.Fat;
   });
@@ -21,6 +20,9 @@ d3.csv("starbucksfoods.csv", function (csv) {
   });
   var proteinExtent = d3.extent(csv, function (row) {
 	  return row.Protein;
+  });
+  var caloriesExtent = d3.extent(csv, function (row) {
+    return row.Calories;
   });
   //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
