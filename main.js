@@ -28,14 +28,8 @@ d3.csv("starbucksfoods.csv", function (csv) {
   var xScale = d3.scaleLinear().domain(fatExtent).range([50, 470]);
   var yScale = d3.scaleLinear().domain(carbExtent).range([470, 30]);
 
-  var xScale2 = d3.scaleLinear().domain(fiberExtent).range([50, 470]);
-  var yScale2 = d3.scaleLinear().domain(proteinExtent).range([470, 30]);
-
   var xAxis = d3.axisBottom().scale(xScale);
   var yAxis = d3.axisLeft().scale(yScale);
-
-  var xAxis2 = d3.axisBottom().scale(xScale2);
-  var yAxis2 = d3.axisLeft().scale(yScale2);
 
   //Create SVGs for charts
   var chart1 = d3
@@ -44,11 +38,6 @@ d3.csv("starbucksfoods.csv", function (csv) {
     .attr("width", width)
     .attr("height", height);
 
-  var chart2 = d3
-    .select("#chart2")
-    .append("svg:svg")
-    .attr("width", width)
-    .attr("height", height);
 
   /******************************************
 		
@@ -75,25 +64,6 @@ d3.csv("starbucksfoods.csv", function (csv) {
     .attr("r", 5)
     .on("click", function (d, i) {});
 
-  var circles2 = chart2
-    .selectAll("circle")
-    .data(csv)
-    .enter()
-    .append("circle")
-    .attr("id", function (d, i) {
-      return i;
-    })
-    .attr("class", "cir_2")
-    .attr("stroke", "black")
-    .attr("cx", function (d) {
-      return xScale2(d.Fiber);
-    })
-    .attr("cy", function (d) {
-      return yScale2(d.Protein);
-    })
-    .attr("r", 5)
-    .on("click", function (d, i) {});
-
   chart1 // or something else that selects the SVG element in your visualizations
     .append("g") // create a group node
     .attr("transform", "translate(0," + (width - 30) + ")")
@@ -115,24 +85,4 @@ d3.csv("starbucksfoods.csv", function (csv) {
     .attr("dy", ".71em")
     .style("text-anchor", "end");
 
-  chart2 // or something else that selects the SVG element in your visualizations
-    .append("g") // create a group node
-    .attr("transform", "translate(0," + (width - 30) + ")")
-    .call(xAxis2)
-    .append("text")
-    .attr("class", "label")
-    .attr("x", width - 16)
-    .attr("y", -6)
-    .style("text-anchor", "end");
-
-  chart2 // or something else that selects the SVG element in your visualizations
-    .append("g") // create a group node
-    .attr("transform", "translate(50, 0)")
-    .call(yAxis2)
-    .append("text")
-    .attr("class", "label")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("dy", ".71em")
-    .style("text-anchor", "end");
 });
