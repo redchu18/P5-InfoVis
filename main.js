@@ -84,11 +84,12 @@ d3.csv("starbucksfoods.csv", function (csv) {
     .attr("x", 200)
     .attr("y", 515)
     .text("sjdhkfbhjdsbfjkh")
-    .style("font-size", "20px");
+    .style("font-size", "15px");
 
     chart1.append("text")
     .attr("x", -300)
     .attr("y", 10)
     .text("sjdhkfbhjdsbfjkh")
-    .attr("transform", "rotate(-90)")
+    .style("font-size", "15px")
+    .attr("transform", "rotate(-90)");
 });
