@@ -102,15 +102,15 @@ d3.csv("starbucksfoods.csv", function (csv) {
     .style("text-anchor", "end");
 
     chart1.append("text")
-    .attr("x", 200)
+    .attr("x", 225)
     .attr("y", 515)
     .text(document.getElementById("xAxis").value)
     .attr("id", "xAxisID")
     .style("font-size", "15px");
 
     chart1.append("text")
-    .attr("x", -300)
-    .attr("y", 10)
+    .attr("x", -275)
+    .attr("y", 15)
     .text(document.getElementById("yAxis").value)
     .attr("id", "yAxisID")
     .style("font-size", "15px")
