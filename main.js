@@ -103,14 +103,14 @@ d3.csv("starbucksfoods.csv", function (csv) {
     .attr("id", "yAxisElement")
     .style("text-anchor", "end");
 
-    chart1.append("text")
+  chart1.append("text")
     .attr("x", 225)
     .attr("y", 515)
     .text(document.getElementById("xAxis").value)
     .attr("id", "xAxisID")
     .style("font-size", "15px");
 
-    chart1.append("text")
+  chart1.append("text")
     .attr("x", -275)
     .attr("y", 15)
     .text(document.getElementById("yAxis").value)
@@ -140,22 +140,27 @@ d3.csv("starbucksfoods.csv", function (csv) {
       case "Calories":
         console.log("Calories");
         var xAxis = d3.axisBottom().scale(caloriesXScale);
+        circles1.data(csv).attr("cx", function (d) { return caloriesXScale(d.Calories); })
         break;
       case "Fat":
         console.log("Fat");
         var xAxis = d3.axisBottom().scale(fatXScale);
+        circles1.data(csv).attr("cx", function (d) { return fatXScale(d.Fat); })
         break;
       case "Carb":
         console.log("Carb");
         var xAxis = d3.axisBottom().scale(carbXScale);
+        circles1.data(csv).attr("cx", function (d) { return carbXScale(d.Carb); })
         break;
       case "Fiber":
         console.log("Fiber");
         var xAxis = d3.axisBottom().scale(fiberXScale);
+        circles1.data(csv).attr("cx", function (d) { return fiberXScale(d.Fiber); })
         break;
       case "Protein":
         console.log("Protein");
         var xAxis = d3.axisBottom().scale(proteinXScale);
+        circles1.data(csv).attr("cx", function (d) { return proteinXScale(d.Protein); })
         break;
     }
 
@@ -175,22 +180,27 @@ d3.csv("starbucksfoods.csv", function (csv) {
       case "Calories":
         console.log("Calories");
         var yAxis = d3.axisLeft().scale(caloriesYScale);
+        circles1.data(csv).attr("cy", function (d) { return caloriesYScale(d.Calories); })
         break;
       case "Fat":
         console.log("Fat");
         var yAxis = d3.axisLeft().scale(fatYScale);
+        circles1.data(csv).attr("cy", function (d) { return fatYScale(d.Fat); })
         break;
       case "Carb":
         console.log("Carb");
         var yAxis = d3.axisLeft().scale(carbYScale);
+        circles1.data(csv).attr("cy", function (d) { return carbYScale(d.Carb); })
         break;
       case "Fiber":
         console.log("Fiber");
         var yAxis = d3.axisLeft().scale(fiberYScale);
+        circles1.data(csv).attr("cy", function (d) { return fiberYScale(d.Fiber); })
         break;
       case "Protein":
         console.log("Protein");
         var yAxis = d3.axisLeft().scale(proteinYScale);
+        circles1.data(csv).attr("cy", function (d) { return proteinYScale(d.Protein); })
         break;
     }
 
