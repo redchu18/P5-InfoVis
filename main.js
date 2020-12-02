@@ -241,7 +241,6 @@ d3.csv("starbucksfoods.csv", function(csv) {
     switch (yVariable) {
       case "Calories":
         console.log("Calories");
-        var yAxis = d3.axisLeft().scale(caloriesYScale);
         circles1.data(csv)
           .transition()
           .duration(500)
@@ -249,7 +248,6 @@ d3.csv("starbucksfoods.csv", function(csv) {
         break;
       case "Fat":
         console.log("Fat");
-        var yAxis = d3.axisLeft().scale(fatYScale);
         circles1.data(csv)
           .transition()
           .duration(500)
@@ -257,7 +255,6 @@ d3.csv("starbucksfoods.csv", function(csv) {
         break;
       case "Carb":
         console.log("Carb");
-        var yAxis = d3.axisLeft().scale(carbYScale);
         circles1.data(csv)
           .transition()
           .duration(500)
@@ -265,7 +262,6 @@ d3.csv("starbucksfoods.csv", function(csv) {
         break;
       case "Fiber":
         console.log("Fiber");
-        var yAxis = d3.axisLeft().scale(fiberYScale);
         circles1.data(csv)
           .transition()
           .duration(500)
@@ -273,7 +269,6 @@ d3.csv("starbucksfoods.csv", function(csv) {
         break;
       case "Protein":
         console.log("Protein");
-        var yAxis = d3.axisLeft().scale(proteinYScale);
         circles1.data(csv)
           .transition()
           .duration(500)
@@ -323,11 +318,15 @@ d3.csv("starbucksfoods.csv", function(csv) {
         if (document.getElementById("Bakery").checked != true) {
           circles1.filter(function(d) {
             return (d.Category === "Bakery")
-          }).style('fill-opacity', 0)
+          }).transition()
+            .duration(500)
+            .style('fill-opacity', 0);
         } else {
           circles1.filter(function(d) {
             return (d.Category === "Bakery")
-          }).style('fill-opacity', 1)
+          }).transition()
+            .duration(500)
+            .style('fill-opacity', 1)
         }
     })
 
@@ -336,11 +335,15 @@ d3.csv("starbucksfoods.csv", function(csv) {
         if (document.getElementById("Lunch").checked != true) {
           circles1.filter(function(d) {
             return (d.Category === "Lunch")
-          }).style('fill-opacity', 0)
+          }).transition()
+            .duration(500)
+            .style('fill-opacity', 0)
         } else {
           circles1.filter(function(d) {
             return (d.Category === "Lunch")
-          }).style('fill-opacity', 1)
+          }).transition()
+            .duration(500)
+            .style('fill-opacity', 1)
         }
     })
 
@@ -349,11 +352,15 @@ d3.csv("starbucksfoods.csv", function(csv) {
         if (document.getElementById("Hot Breakfast").checked != true) {
           circles1.filter(function(d) {
             return (d.Category === "Hot Breakfast")
-          }).style('fill-opacity', 0)
+          }).transition()
+            .duration(500)
+            .style('fill-opacity', 0)
         } else {
           circles1.filter(function(d) {
             return (d.Category === "Hot Breakfast")
-          }).style('fill-opacity', 1)
+          }).transition()
+            .duration(500)
+            .style('fill-opacity', 1)
         }
     })
 
@@ -362,11 +369,15 @@ d3.csv("starbucksfoods.csv", function(csv) {
         if (document.getElementById("Snacks & Sweets").checked != true) {
           circles1.filter(function(d) {
             return (d.Category === "Snacks & Sweets")
-          }).style('fill-opacity', 0)
+          }).transition()
+            .duration(500)
+            .style('fill-opacity', 0)
         } else {
           circles1.filter(function(d) {
             return (d.Category === "Snacks & Sweets")
-          }).style('fill-opacity', 1)
+          }).transition()
+            .duration(500)
+            .style('fill-opacity', 1)
         }
     })
 
@@ -375,11 +386,15 @@ d3.csv("starbucksfoods.csv", function(csv) {
         if (document.getElementById("Yogurt & Custard").checked != true) {
           circles1.filter(function(d) {
             return (d.Category === "Yogurt & Custard")
-          }).style('fill-opacity', 0)
+          }).transition()
+            .duration(500)
+            .style('fill-opacity', 0)
         } else {
           circles1.filter(function(d) {
             return (d.Category === "Yogurt & Custard")
-          }).style('fill-opacity', 1)
+          }).transition()
+            .duration(500)
+            .style('fill-opacity', 1)
         }
     })
 });
