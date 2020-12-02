@@ -72,6 +72,7 @@ d3.csv("starbucksfoods.csv", function(csv) {
     .on("click", function (d, i) {
       d3.selectAll("circle").attr("r", "5").attr('stroke-opacity', 0);
       d3.select(this).attr("r", "7").attr('stroke', 'black').attr('stroke-opacity', 1);
+      document.getElementById("ItemName").textContent = d.Item;
       document.getElementById("Fat").textContent = d.Fat;
       document.getElementById("Carb").textContent = d.Carb;
       document.getElementById("Fiber").textContent = d.Fiber;
