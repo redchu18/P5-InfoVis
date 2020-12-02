@@ -62,7 +62,6 @@ d3.csv("starbucksfoods.csv", function(csv) {
     .attr("id", function (d, i) {
       return i;
     })
-    .attr("stroke", "black")
     .attr("cx", function (d) {
       return caloriesXScale(d.Calories);
     })
@@ -71,14 +70,34 @@ d3.csv("starbucksfoods.csv", function(csv) {
     })
     .attr("r", 5)
     .on("click", function (d, i) {
-      d3.selectAll("circle").attr("fill", "black");
-      d3.select(this).attr("fill", "pink");
+      d3.selectAll("circle").attr("r", "5").attr('stroke-opacity', 0);
+      d3.select(this).attr("r", "7").attr('stroke', 'black').attr('stroke-opacity', 1);
       document.getElementById("Fat").textContent = d.Fat;
       document.getElementById("Carb").textContent = d.Carb;
       document.getElementById("Fiber").textContent = d.Fiber;
       document.getElementById("Protein").textContent = d.Protein;
       document.getElementById("Calories").textContent = d.Calories;
     });
+
+    circles1.filter(function(d) {
+      return (d.Category === "Yogurt & Custard")
+    }).style('fill', 'orange')
+
+    circles1.filter(function(d) {
+      return (d.Category === "Lunch")
+    }).style('fill', 'blue')
+
+    circles1.filter(function(d) {
+      return (d.Category === "Hot Breakfast")
+    }).style('fill', 'red')
+
+    circles1.filter(function(d) {
+      return (d.Category === "Snacks & Sweets")
+    }).style('fill', 'purple')
+
+    circles1.filter(function(d) {
+      return (d.Category === "Bakery")
+    }).style('fill', 'green')
 
   chart1 // or something else that selects the SVG element in your visualizations
     .append("g") // create a group node
@@ -223,11 +242,11 @@ d3.csv("starbucksfoods.csv", function(csv) {
         if (document.getElementById("Bakery").checked != true) {
           circles1.filter(function(d) {
             return (d.Category === "Bakery")
-          }).style('fill-opacity', 0).style('stroke-opacity', 0)
+          }).style('fill-opacity', 0)
         } else {
           circles1.filter(function(d) {
             return (d.Category === "Bakery")
-          }).style('fill-opacity', 1).style('stroke', 'black')
+          }).style('fill-opacity', 1)
         }
     })
 
@@ -236,11 +255,11 @@ d3.csv("starbucksfoods.csv", function(csv) {
         if (document.getElementById("Lunch").checked != true) {
           circles1.filter(function(d) {
             return (d.Category === "Lunch")
-          }).style('fill-opacity', 0).style('stroke-opacity', 0)
+          }).style('fill-opacity', 0)
         } else {
           circles1.filter(function(d) {
             return (d.Category === "Lunch")
-          }).style('fill-opacity', 1).style('stroke', 'black')
+          }).style('fill-opacity', 1)
         }
     })
 
@@ -249,11 +268,11 @@ d3.csv("starbucksfoods.csv", function(csv) {
         if (document.getElementById("Hot Breakfast").checked != true) {
           circles1.filter(function(d) {
             return (d.Category === "Hot Breakfast")
-          }).style('fill-opacity', 0).style('stroke-opacity', 0)
+          }).style('fill-opacity', 0)
         } else {
           circles1.filter(function(d) {
             return (d.Category === "Hot Breakfast")
-          }).style('fill-opacity', 1).style('stroke', 'black')
+          }).style('fill-opacity', 1)
         }
     })
 
@@ -262,11 +281,11 @@ d3.csv("starbucksfoods.csv", function(csv) {
         if (document.getElementById("Snacks & Sweets").checked != true) {
           circles1.filter(function(d) {
             return (d.Category === "Snacks & Sweets")
-          }).style('fill-opacity', 0).style('stroke-opacity', 0)
+          }).style('fill-opacity', 0)
         } else {
           circles1.filter(function(d) {
             return (d.Category === "Snacks & Sweets")
-          }).style('fill-opacity', 1).style('stroke', 'black')
+          }).style('fill-opacity', 1)
         }
     })
 
@@ -275,11 +294,11 @@ d3.csv("starbucksfoods.csv", function(csv) {
         if (document.getElementById("Yogurt & Custard").checked != true) {
           circles1.filter(function(d) {
             return (d.Category === "Yogurt & Custard")
-          }).style('fill-opacity', 0).style('stroke-opacity', 0)
+          }).style('fill-opacity', 0)
         } else {
           circles1.filter(function(d) {
             return (d.Category === "Yogurt & Custard")
-          }).style('fill-opacity', 1).style('stroke', 'black')
+          }).style('fill-opacity', 1)
         }
     })
 });
