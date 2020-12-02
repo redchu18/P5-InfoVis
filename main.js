@@ -139,10 +139,18 @@ d3.csv("starbucksfoods.csv", function(csv) {
     .attr("transform", "rotate(-90)");
 
   d3.select(document.getElementById("xAxis"))
-    .on("change", axisHelper);
+    .on("change", x => { 
+        axisHelper();
+        changeCircleX(); 
+      }
+    );
 
   d3.select(document.getElementById("yAxis"))
-    .on("change", axisHelper);
+    .on("change", x => { 
+        axisHelper();
+        changeCircleY(); 
+      }
+    );
 
   function axisHelper() {
 
@@ -161,27 +169,22 @@ d3.csv("starbucksfoods.csv", function(csv) {
       case "Calories":
         console.log("Calories");
         var xAxis = d3.axisBottom().scale(caloriesXScale);
-        circles1.data(csv).attr("cx", function (d) { return caloriesXScale(d.Calories); })
         break;
       case "Fat":
         console.log("Fat");
         var xAxis = d3.axisBottom().scale(fatXScale);
-        circles1.data(csv).attr("cx", function (d) { return fatXScale(d.Fat); })
         break;
       case "Carb":
         console.log("Carb");
         var xAxis = d3.axisBottom().scale(carbXScale);
-        circles1.data(csv).attr("cx", function (d) { return carbXScale(d.Carb); })
         break;
       case "Fiber":
         console.log("Fiber");
         var xAxis = d3.axisBottom().scale(fiberXScale);
-        circles1.data(csv).attr("cx", function (d) { return fiberXScale(d.Fiber); })
         break;
       case "Protein":
         console.log("Protein");
         var xAxis = d3.axisBottom().scale(proteinXScale);
-        circles1.data(csv).attr("cx", function (d) { return proteinXScale(d.Protein); })
         break;
     }
 
@@ -196,34 +199,29 @@ d3.csv("starbucksfoods.csv", function(csv) {
     .attr("id", "xAxisElement")
     .style("text-anchor", "end");
 
-        //Change axis
-        switch (yVariable) {
-          case "Calories":
-            console.log("Calories");
-            var yAxis = d3.axisLeft().scale(caloriesYScale);
-            circles1.data(csv).attr("cy", function (d) { return caloriesYScale(d.Calories); })
-            break;
-          case "Fat":
-            console.log("Fat");
-            var yAxis = d3.axisLeft().scale(fatYScale);
-            circles1.data(csv).attr("cy", function (d) { return fatYScale(d.Fat); })
-            break;
-          case "Carb":
-            console.log("Carb");
-            var yAxis = d3.axisLeft().scale(carbYScale);
-            circles1.data(csv).attr("cy", function (d) { return carbYScale(d.Carb); })
-            break;
-          case "Fiber":
-            console.log("Fiber");
-            var yAxis = d3.axisLeft().scale(fiberYScale);
-            circles1.data(csv).attr("cy", function (d) { return fiberYScale(d.Fiber); })
-            break;
-          case "Protein":
-            console.log("Protein");
-            var yAxis = d3.axisLeft().scale(proteinYScale);
-            circles1.data(csv).attr("cy", function (d) { return proteinYScale(d.Protein); })
-            break;
-        }
+    //Change axis
+    switch (yVariable) {
+      case "Calories":
+        console.log("Calories");
+        var yAxis = d3.axisLeft().scale(caloriesYScale);
+        break;
+      case "Fat":
+        console.log("Fat");
+        var yAxis = d3.axisLeft().scale(fatYScale);
+        break;
+      case "Carb":
+        console.log("Carb");
+        var yAxis = d3.axisLeft().scale(carbYScale);
+        break;
+      case "Fiber":
+        console.log("Fiber");
+        var yAxis = d3.axisLeft().scale(fiberYScale);
+        break;
+      case "Protein":
+        console.log("Protein");
+        var yAxis = d3.axisLeft().scale(proteinYScale);
+        break;
+    }
 
     chart1 // or something else that selects the SVG element in your visualizations
     .append("g") // create a group node
@@ -236,6 +234,88 @@ d3.csv("starbucksfoods.csv", function(csv) {
     .attr("dy", ".71em")
     .attr("id", "yAxisElement")
     .style("text-anchor", "end");
+  }
+
+  function changeCircleY() {
+    var yVariable = document.getElementById("yAxis").value;
+    switch (yVariable) {
+      case "Calories":
+        console.log("Calories");
+        var yAxis = d3.axisLeft().scale(caloriesYScale);
+        circles1.data(csv)
+          .transition()
+          .duration(500)
+          .attr("cy", function (d) { return caloriesYScale(d.Calories); });
+        break;
+      case "Fat":
+        console.log("Fat");
+        var yAxis = d3.axisLeft().scale(fatYScale);
+        circles1.data(csv)
+          .transition()
+          .duration(500)
+          .attr("cy", function (d) { return fatYScale(d.Fat); });
+        break;
+      case "Carb":
+        console.log("Carb");
+        var yAxis = d3.axisLeft().scale(carbYScale);
+        circles1.data(csv)
+          .transition()
+          .duration(500)
+          .attr("cy", function (d) { return carbYScale(d.Carb); });
+        break;
+      case "Fiber":
+        console.log("Fiber");
+        var yAxis = d3.axisLeft().scale(fiberYScale);
+        circles1.data(csv)
+          .transition()
+          .duration(500)
+          .attr("cy", function (d) { return fiberYScale(d.Fiber); });
+        break;
+      case "Protein":
+        console.log("Protein");
+        var yAxis = d3.axisLeft().scale(proteinYScale);
+        circles1.data(csv)
+          .transition()
+          .duration(500)
+          .attr("cy", function (d) { return proteinYScale(d.Protein); });
+        break;
+    }
+  }
+
+  function changeCircleX() {
+    var xVariable = document.getElementById("xAxis").value;
+    switch (xVariable) {
+      case "Calories":
+        circles1.data(csv)
+          .transition()
+          .duration(500)
+          .attr("cx", function (d) { return caloriesXScale(d.Calories); });
+        break;
+      case "Fat":
+        circles1.data(csv)
+          .transition()
+          .duration(500)
+          .attr("cx", function (d) { return fatXScale(d.Fat); });
+        break;
+      case "Carb":
+        circles1.data(csv)
+          .transition()
+          .duration(500)
+          .attr("cx", function (d) { return carbXScale(d.Carb); });
+        break;
+      case "Fiber":
+        circles1.data(csv)
+          .transition()
+          .duration(500)
+          .attr("cx", function (d) { return fiberXScale(d.Fiber); });
+        break;
+      case "Protein":
+        circles1.data(csv)
+          .transition()
+          .duration(500)
+          .attr("cx", function (d) { return proteinXScale(d.Protein); });
+        break;
+    }
   }
 
     d3.select(document.getElementById("Bakery"))
