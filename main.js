@@ -82,7 +82,7 @@ d3.csv("starbucksfoods.csv", function(csv) {
 
     circles1.filter(function(d) {
       return (d.Category === "Yogurt & Custard")
-    }).style('fill', 'orange')
+    }).style('fill', 'gray')
 
     circles1.filter(function(d) {
       return (d.Category === "Lunch")

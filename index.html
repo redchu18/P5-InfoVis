@@ -7,37 +7,48 @@
 		<script type="text/javascript" src="main.js"></script>	 
    	</head>
    	<body>
-      <label for="xAxis">Choose X Variable:</label>
-      <select name="xAxis" id="xAxis">
-        <option value="Calories">Calories</option>
-        <option value="Fat">Fat</option>
-        <option value="Carb">Carb</option>
-        <option value="Fiber">Fiber</option>
-        <option value="Protein">Protein</option>
-      </select>
-      <label for="yAxis">Choose Y Variable:</label>
-      <select name="yAxis" id="yAxis">
-        <option value="Calories">Calories</option>
-        <option value="Fat">Fat</option>
-        <option value="Carb">Carb</option>
-        <option value="Fiber">Fiber</option>
-        <option value="Protein">Protein</option>
+      <div id="titleWrapper">
+        <h1 id="title">Starbucks Menu Nutritional Information</h1>
+        <img src="Starbucks-Logo.png" alt="Starbucks logo" style="width:200;height:115px;">
+      </div>
+      <div>
+        <label for="xAxis">Choose X Variable:</label>
+        <select name="xAxis" id="xAxis">
+          <option value="Calories">Calories</option>
+          <option value="Fat">Fat</option>
+          <option value="Carb">Carb</option>
+          <option value="Fiber">Fiber</option>
+          <option value="Protein">Protein</option>
+        </select>
+        <label for="yAxis">Choose Y Variable:</label>
+        <select name="yAxis" id="yAxis">
+          <option value="Calories">Calories</option>
+          <option value="Fat">Fat</option>
+          <option value="Carb">Carb</option>
+          <option value="Fiber">Fiber</option>
+          <option value="Protein">Protein</option>
+      </div>
 	  </select>
-	  <div>
-	  	<input type="checkbox" id="Bakery" name="Bakery" checked>
-		<label for="Bakery"> Bakery Items </label><br>
-		<input type="checkbox" id="Lunch" name="Lunch" checked>
-		<label for="Lunch"> Lunch Items </label><br>
-		<input type="checkbox" id="Snacks & Sweets" name="Snacks & Sweets" checked>
-		<label for="Snacks & Sweets"> Snacks & Sweets </label><br>
-		<input type="checkbox" id="Hot Breakfast" name="Hot Breakfast" checked>
-		<label for="Hot Breakfast"> Breakfast Items </label><br>
-		<input type="checkbox" id="Yogurt & Custard" name="Yogurt & Custard" checked>
-		<label for="Yogurt & Custard"> Yogurt & Custard </label><br>
-	</div>
 	   	<div id="wrapper">
-			<div id="chart1">
-			</div>
+        <div id="chart1"></div>
+        <div>
+          <input type="checkbox" id="Bakery" name="Bakery" checked>
+          <label for="Bakery" id="bakeryId">&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+          <label for="Bakery"> Bakery Items </label><br>
+          <input type="checkbox" id="Lunch" name="Lunch" checked>
+          <label for="Lunch" id="LunchItems">&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+          <label for="Lunch"> Lunch Items </label><br>
+          <input type="checkbox" id="Snacks & Sweets" name="Snacks & Sweets" checked>
+          <label for="Snacks & Sweets" id="SnackSweetsId">&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+          <label for="Snacks & Sweets"> Snacks & Sweets </label><br>
+          <input type="checkbox" id="Hot Breakfast" name="Hot Breakfast" checked>
+          <label for="Hot Breakfast" id="HotBreakfast">&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+          <label for="Hot Breakfast"> Breakfast Items </label><br>
+          <input type="checkbox" id="Yogurt & Custard" name="Yogurt & Custard" checked>
+          <label for="Yogurt & Custard" id="YogurtCustard">&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+          <label for="Yogurt & Custard"> Yogurt & Custard </label><br>
+        </div>
+        <br><br>
 		  	<div id="chart3">
           <strong>Item Name:</strong> <span id="ItemName"></span><br/>
           <strong>Fat Value:</strong> <span id="Fat"></span><br/>

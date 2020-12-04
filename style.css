@@ -1,5 +1,29 @@
 #chart1 {
     float:left;
 }
+#title {
+    float:left;
+}
+#bakeryId {
+  font-size:15px;
+  background-color:green;
+}
+#LunchItems {
+  font-size:15px;
+  background-color:blue;
+}
+#SnackSweetsId {
+  font-size:15px;
+  background-color:purple;
+}
+#HotBreakfast {
+  font-size:15px;
+  background-color:red;
+}
+#YogurtCustard {
+  font-size:15px;
+  background-color: gray;
+}
+
 
 
