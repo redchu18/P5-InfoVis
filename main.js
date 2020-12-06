@@ -26,7 +26,6 @@ d3.csv("starbucksfoods.csv", function(csv) {
   var caloriesExtent = d3.extent(csv, function (row) {
     return row.Calories;
   });
-  //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   // Axis setup
   // Will hardcode range values later, if Y axis, range will be [470, 30]
@@ -46,7 +45,7 @@ d3.csv("starbucksfoods.csv", function(csv) {
   var xAxis = d3.axisBottom().scale(caloriesXScale);
   var yAxis = d3.axisLeft().scale(caloriesYScale);
 
-  //Create SVGs for charts
+  //Create SVGs for chart 1
   var chart1 = d3
     .select("#chart1")
     .append("svg:svg")
@@ -80,6 +79,7 @@ d3.csv("starbucksfoods.csv", function(csv) {
       document.getElementById("Calories").textContent = d.Calories;
     });
 
+    //color every point according to it's category
     circles1.filter(function(d) {
       return (d.Category === "Yogurt & Custard")
     }).style('fill', 'gray')
@@ -100,10 +100,12 @@ d3.csv("starbucksfoods.csv", function(csv) {
       return (d.Category === "Bakery")
     }).style('fill', 'green')
 
-  chart1 // or something else that selects the SVG element in your visualizations
-    .append("g") // create a group node
+
+  //append axes to the charts
+  chart1 
+    .append("g") 
     .attr("transform", "translate(0," + (width - 30) + ")")
-    .call(xAxis) // call the axis generator
+    .call(xAxis) 
     .append("text")
     .attr("class", "label")
     .attr("x", width - 16)
@@ -111,8 +113,8 @@ d3.csv("starbucksfoods.csv", function(csv) {
     .attr("id", "xAxisElement")
     .style("text-anchor", "end");
 
-  chart1 // or something else that selects the SVG element in your visualizations
-    .append("g") // create a group node
+  chart1 
+    .append("g") 
     .attr("transform", "translate(50, 0)")
     .call(yAxis)
     .append("text")
@@ -123,6 +125,7 @@ d3.csv("starbucksfoods.csv", function(csv) {
     .attr("id", "yAxisElement")
     .style("text-anchor", "end");
 
+  //append axis labels to the chart, these will be updated based on user input
   chart1.append("text")
     .attr("x", 225)
     .attr("y", 515)
@@ -138,6 +141,7 @@ d3.csv("starbucksfoods.csv", function(csv) {
     .style("font-size", "15px")
     .attr("transform", "rotate(-90)");
 
+  //add on change helper to dropdown menus
   d3.select(document.getElementById("xAxis"))
     .on("change", x => { 
         axisHelper();
@@ -152,6 +156,7 @@ d3.csv("starbucksfoods.csv", function(csv) {
       }
     );
 
+  //this axis helper function updates the chart when a dropdown is updated
   function axisHelper() {
 
     var xVariable = document.getElementById("xAxis").value;
@@ -223,8 +228,8 @@ d3.csv("starbucksfoods.csv", function(csv) {
         break;
     }
 
-    chart1 // or something else that selects the SVG element in your visualizations
-    .append("g") // create a group node
+    chart1 
+    .append("g") 
     .attr("transform", "translate(50, 0)")
     .call(yAxis)
     .append("text")
@@ -236,6 +241,7 @@ d3.csv("starbucksfoods.csv", function(csv) {
     .style("text-anchor", "end");
   }
 
+  //helper function, when Y axis is updated, this updates the Y coordinates of the points
   function changeCircleY() {
     var yVariable = document.getElementById("yAxis").value;
     switch (yVariable) {
@@ -277,6 +283,7 @@ d3.csv("starbucksfoods.csv", function(csv) {
     }
   }
 
+  //helper function, when X axis is updated, this updates the Y coordinates of the points
   function changeCircleX() {
     var xVariable = document.getElementById("xAxis").value;
     switch (xVariable) {
@@ -313,6 +320,7 @@ d3.csv("starbucksfoods.csv", function(csv) {
     }
   }
 
+  //code for checkboxes. If a category is not checked, the points in that category will have it's opacity changed accordingly
     d3.select(document.getElementById("Bakery"))
     .on("click", function() {
         if (document.getElementById("Bakery").checked != true) {
